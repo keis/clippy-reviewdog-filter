@@ -42,10 +42,19 @@ pub struct Artifact {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ArtifactProfile {
     pub opt_level: String,
-    pub debuginfo: Option<u32>,
+    pub debuginfo: Option<DebugInfo>,
     pub debug_assertions: bool,
     pub overflow_checks: bool,
     pub test: bool,
+}
+
+// Cargo widened `debuginfo` to also spell out named levels such as
+// "line-tables-only" (rust-lang/cargo#17518), so accept both spellings.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DebugInfo {
+    Int(u32),
+    Named(String),
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
