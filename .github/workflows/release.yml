@@ -98,7 +98,7 @@ jobs:
 
   create_release:
     name: Create Release
-    needs: ["build-linux", "build-macos", "build-windows"]
+    needs: ["build-linux"]
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts for release
