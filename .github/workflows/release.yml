@@ -6,8 +6,7 @@ on:
     tags: ["v*"]
 
 permissions:
-  contents: read
-  releases: write
+  contents: write
 
 jobs:
   build-linux:
