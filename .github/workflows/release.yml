@@ -5,6 +5,10 @@ on:
     branches: ["test-release-*"]
     tags: ["v*"]
 
+permissions:
+  contents: read
+  releases: write
+
 jobs:
   build-linux:
     runs-on: ubuntu-latest
